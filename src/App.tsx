@@ -7,17 +7,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 
 import "./App.css";
-import Header from "./components/layouts/header";
-import SideBar from "./components/layouts/sidebar";
-import Main from "./components/layouts/main/Main";
+import { RouterProvider } from "react-router-dom";
+import { routes } from "./routes/routes";
 
 function App() {
   return (
-    <>
-      <Header />
-      <SideBar />
-      <Main />
-    </>
+    <RouterProvider router={routes}/>
   );
 }
 
