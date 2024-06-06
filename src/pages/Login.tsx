@@ -3,6 +3,7 @@ import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import FormInput from "../components/form/inputs/FormInput";
 import ButtonSubmit from "../components/form/buttons/ButtonSubmit";
 import { emailValidation, passwordValidation } from "../validations/loginValidation";
+import { useAuth } from "../context/AuthContext";
 
 export type FormLoginValues = {
   email: string;
@@ -12,7 +13,7 @@ export type FormLoginValues = {
 const Login = () => {
   const methods = useForm<FormLoginValues>();
   const { handleSubmit } = methods;
-
+  const {setToken} = useAuth();
   const onSubmit: SubmitHandler<FormLoginValues> = (data) => {
     console.log(data);
     // Xử lý đăng nhập tại đây

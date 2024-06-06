@@ -7,12 +7,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 
 import "./App.css";
-import { RouterProvider } from "react-router-dom";
-import { routes } from "./routes/routes";
+import Routes from "./routes/routes";
+import AuthProvider from "./context/AuthContext";
 
 function App() {
   return (
-    <RouterProvider router={routes}/>
+    <AuthProvider>
+      <Routes />
+    </AuthProvider>
   );
 }
 
