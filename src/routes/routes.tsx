@@ -5,8 +5,8 @@ import {
 } from "react-router-dom";
 import { ROUTE } from "../configs/router";
 import Login from "../pages/Login";
-import Dashboard from "../pages/Dashboard";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../lib/context/AuthContext";
+import DashboardPage from "../pages/dashboard/Dashboard";
 
 const Routes = () => {
   const { token } = useAuth();
@@ -25,7 +25,7 @@ const Routes = () => {
   const routesForAuthenticatedOnly: RouteObject[] = [
     {
       path: ROUTE.DASHBOARD,
-      element: <Dashboard />,
+      element: <DashboardPage />,
     },
     {
       path: "/profile",

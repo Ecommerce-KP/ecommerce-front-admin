@@ -9,10 +9,11 @@ import {
   clearLocalStorge,
   deleteLocalStorage,
   getLocalStorage,
-} from "../lib/helpers/localStorageHelper";
+} from "../helpers/localStorageHelper";
 import axios from "axios";
-import { User } from "../types/user";
-import { ChidlrenWithProps } from "../types/common";
+import { User } from "../../types/user";
+import { ChidlrenWithProps } from "../../types/common";
+import { Navigate, redirect, useNavigate } from "react-router-dom";
 
 interface AuthContextType {
   token: string;
@@ -48,15 +49,6 @@ const AuthProvider = ({ children }: ChidlrenWithProps) => {
     }),
     [token, user]
   );
-
-  useEffect(() => {
-    if (token) {
-      axios.defaults.headers.common["Authorization"] = "Bearer" + token;
-    } else {
-      delete axios.defaults.headers.common["Authorization"];
-      deleteLocalStorage(accessTokenSRKey);
-    }
-  }, [token]);
 
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>

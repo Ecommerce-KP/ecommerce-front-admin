@@ -8,7 +8,7 @@ import "bootstrap/dist/js/bootstrap.min.js";
 
 import "./App.css";
 import Routes from "./routes/routes";
-import AuthProvider from "./context/AuthContext";
+import AuthProvider from "./lib/context/AuthContext";
 
 function App() {
   return (
