@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import FormInput from "../components/form/inputs/FormInput";
 import ButtonSubmit from "../components/form/buttons/ButtonSubmit";
@@ -7,23 +7,46 @@ import {
   passwordValidation,
 } from "../validations/loginValidation";
 import { useAuth } from "../lib/context/AuthContext";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { ROUTE } from "../configs/router";
+import { login } from "../services/request/authService";
+import { setLocalStorage } from "../lib/helpers/localStorageHelper";
+import SpinnerButton from "../components/form/buttons/SpinnerButton";
+import Spinner from "../components/ui/loading/Spinner";
 
 export type FormLoginValues = {
   email: string;
   password: string;
 };
 
+type ResposenLogin = {
+  access_token: string;
+  expires_in: number;
+  token_type: string;
+};
+
 const Login = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const navigate = useNavigate();
   const methods = useForm<FormLoginValues>();
   const { handleSubmit } = methods;
   const { setToken, token } = useAuth();
-  const onSubmit: SubmitHandler<FormLoginValues> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<FormLoginValues> = async (data) => {
     // Xử lý đăng nhập tại đây
-  };
+    setIsLoading(true)
+    const [res, error] = await login(data.email, data.password);
+    if (res) {
+      setLocalStorage("access_token", res.access_token);
+      setToken(res.access_token);
+      navigate(ROUTE.DASHBOARD);
+    }
 
+    if (error) {
+      console.error(error.message);
+    }
+
+    setIsLoading(false)
+  };
   return (
     <>
       {token ? (
@@ -50,7 +73,7 @@ const Login = () => {
                   validation={passwordValidation}
                   required
                 />
-                <ButtonSubmit name="Login" className="mt-[10px]" />
+                <SpinnerButton label="Login" isLoading={isLoading} className="!w-full"/>
                 <div className="text-right mt-[20px]">
                   <span className="text-sky-600 text-[12px] hover:underline cursor-pointer">
                     Forgot Password?

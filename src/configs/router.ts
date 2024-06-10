@@ -1,4 +1,4 @@
 export const ROUTE = {
-    DASHBOARD: '/dashboard',
+    DASHBOARD: '/',
     LOGIN: '/login',
 }

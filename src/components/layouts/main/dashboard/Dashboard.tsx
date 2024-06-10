@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./dashboard.css";
 import axios from "axios";
 import { useQuery } from "react-query";
-import Card from "../../../card/Card";
+import Card from "../../../dashboard/card/Card";
 
 import "./dashboard.css";
-import Report from "../../../report/Report";
-import RecentSale from "../../../recentSale/RecentSale";
-import TopSelling from "../../../topselling/TopSelling";
-import RecentActivity from "../../../recentActivity/RecentActivity";
+import Report from "../../../dashboard/report/Report";
+import RecentSale from "../../../dashboard/recentSale/RecentSale";
+import TopSelling from "../../../dashboard/topselling/TopSelling";
+import RecentActivity from "../../../dashboard/recentActivity/RecentActivity";
 
 export type CardType = {
   _id: number;

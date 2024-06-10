@@ -1,4 +1,4 @@
-import { ChidlrenWithProps } from "@/types/common";
+import { ChidlrenWithProps } from "../../types/common";
 import React, { FC } from "react";
 import Header from "./header";
 import SideBar from "./sidebar";

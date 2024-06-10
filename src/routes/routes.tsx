@@ -7,6 +7,7 @@ import { ROUTE } from "../configs/router";
 import Login from "../pages/Login";
 import { useAuth } from "../lib/context/AuthContext";
 import DashboardPage from "../pages/dashboard/Dashboard";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 const Routes = () => {
   const { token } = useAuth();
@@ -24,24 +25,25 @@ const Routes = () => {
 
   const routesForAuthenticatedOnly: RouteObject[] = [
     {
-      path: ROUTE.DASHBOARD,
-      element: <DashboardPage />,
-    },
-    {
-      path: "/profile",
-      element: <div>User Profile</div>,
-    },
-    {
-      path: "/logout",
-      element: <div>Logout</div>,
+      element: <ProtectedRoute />,
+      children: [
+        {
+          path: '/',
+          element: <DashboardPage />,
+        },
+        {
+          path: "/profile",
+          element: <div>User Profile</div>,
+        },
+        {
+          path: "/logout",
+          element: <div>Logout</div>,
+        },
+      ],
     },
   ];
 
   const routesForNotAuthenticatedOnly = [
-    {
-      path: "/",
-      element: <div>Home Page</div>,
-    },
     {
       path: ROUTE.LOGIN,
       element: <Login />,

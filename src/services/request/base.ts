@@ -1,5 +1,5 @@
-import { deleteLocalStorage, getLocalStorage } from "@/lib/helpers/localStorageHelper";
-import { ApiResponse, FilterParams, RequestError, RequestMethods } from "@/types/request";
+import { deleteLocalStorage, getLocalStorage } from "../../lib/helpers/localStorageHelper";
+import { ApiResponse, FilterParams, RequestError, RequestMethods } from "../../types/request";
 import axios, { AxiosError, AxiosRequestConfig, AxiosRequestHeaders } from "axios";
 
 const instance = axios.create({
@@ -72,7 +72,7 @@ const baseRequest = async (
         configs: AxiosRequestConfig = {}
 ): Promise<[any, RequestError | undefined]> => {
         try {
-                const baseUrl = process.env.PUBLIC_API_URL
+                const baseUrl = process.env.REACT_APP_PUBLIC_API_URL
                 const newConfigs = {
                         ...configs,
                         url: baseUrl + url,

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CardType } from "../layouts/main/dashboard/Dashboard";
+import { CardType } from "../../layouts/main/dashboard/Dashboard";
 import CardFilter from "./CardFilter";
 
 import "./card.css";

@@ -50,6 +50,12 @@ const AuthProvider = ({ children }: ChidlrenWithProps) => {
     [token, user]
   );
 
+  useEffect(() => {
+    if(!token) {
+      redirect('/login')
+    }
+  }, [token])
+
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );

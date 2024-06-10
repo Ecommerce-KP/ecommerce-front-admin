@@ -1,11 +1,11 @@
-import client from "@/services/request/client";
+import client from "../services/request/client";
 import {
   CreateParams,
   FilterParams,
   PaginationData,
   RequestError,
   UpdateParams,
-} from "@/types/request";
+} from "../types/request";
 
 export default abstract class Model<T, F = unknown> {
   protected abstract url: string;
