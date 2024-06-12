@@ -4,7 +4,7 @@ import React from "react";
 
 const DashboardPage = () => {
   return (
-    <AdminLayout>
+    <AdminLayout page="Dashboard">
       <Main />
     </AdminLayout>
   );

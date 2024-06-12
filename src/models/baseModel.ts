@@ -7,7 +7,7 @@ import {
   UpdateParams,
 } from "../types/request";
 
-export default abstract class Model<T, F = unknown> {
+export default abstract class BaseModel<T, F = unknown> {
   protected abstract url: string;
 
   create = (

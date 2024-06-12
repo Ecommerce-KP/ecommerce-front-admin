@@ -1,6 +1,6 @@
 import React from "react";
 import { TopSellingType } from "./TopSelling";
-import img from "../../assets/imgs/product-1.jpg";
+import img from "../../../assets/imgs/product-1.jpg";
 
 type TopSellingItemType = {
   item: TopSellingType;

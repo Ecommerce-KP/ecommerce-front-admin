@@ -8,6 +8,7 @@ import Login from "../pages/Login";
 import { useAuth } from "../lib/context/AuthContext";
 import DashboardPage from "../pages/dashboard/Dashboard";
 import ProtectedRoute from "../components/ProtectedRoute";
+import UserListPage from "../pages/user";
 
 const Routes = () => {
   const { token } = useAuth();
@@ -28,12 +29,12 @@ const Routes = () => {
       element: <ProtectedRoute />,
       children: [
         {
-          path: '/',
+          path: "/",
           element: <DashboardPage />,
         },
         {
-          path: "/profile",
-          element: <div>User Profile</div>,
+          path: "/users",
+          element: <UserListPage />,
         },
         {
           path: "/logout",
